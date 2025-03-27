@@ -1,0 +1,388 @@
+
+
+body.night {
+  text-align: center;
+  --night-color: #7c3aed;
+  --bg-color: #1a237e;
+  --window-color: #2A2A2A;
+}
+
+img {
+  border: solid 5px #ffffff;
+  border-radius: 10px;
+  margin-top: 40px;
+  box-shadow: 0 0 30px 10px rgb(255, 255, 255);
+  height: auto;
+  max-width: 100%;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 35px #4ed6ff; }
+    50% { box-shadow: 0 0 25px #4ed6ff; }
+    100% { box-shadow: 0 0 35px #4ed6ff; }
+  }
+  
+
+header {
+  color: rgb(58, 58, 58);
+  background-color: #ffffff;
+  border: solid 10px rgb(255, 255, 255);
+  border-radius: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 10%;
+  margin-top: 5%;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  animation: glow 1s infinite;
+}
+
+footer {
+  margin-top: 200px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 750;
+  font-style: italic;
+  color: rgb(0, 0, 0);
+  border: solid 5px honeydew;
+  border-radius: 40px;
+  margin-left: 550px;
+  margin-right: 550px;
+}
+
+
+.sky-effects {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Облака */
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 20px;
+  animation: float 60s linear infinite;
+  opacity: 0.8;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: inherit;
+  border-radius: inherit;
+}
+
+/* Звезды */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite;
+}
+
+/* Анимации */
+@keyframes float {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100vw); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Переключение эффектов */
+body.night .cloud { display: none; }
+body:not(.night) .star { display: none; }
+
+.cloud, .star {
+  will-change: transform, opacity; /* Оптимизация анимаций */
+}
+
+figure:hover {
+  transform: 
+    translateY(-5px)
+    rotateZ(2deg);
+  z-index: 10;
+}
+
+img {
+  transition: transform 0.5s, box-shadow 0.3s;
+}
+
+img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 40px rgba(255,255,255,0.7);
+
+}
+
+/* Добавьте в CSS */
+.theme-info {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.theme-message {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 20px;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  display: inline-block;
+  max-width: 250px;
+  text-align: center;
+  border: 2px solid #ffffff;
+}
+
+.theme-message.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  .theme-info {
+    top: 80px;
+    right: 10px;
+    left: 10px;
+  }
+  
+  .theme-message {
+    width: calc(100% - 20px);
+    max-width: none;
+  }
+}
+
+/* Мобильные устройства (портретная ориентация) */
+@media only screen and (max-width: 767px) {
+  .your-class {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  /* Скрываем элементы для мобильных */
+  .desktop-only {
+    display: none;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.col {
+  flex: 1 1 100%;
+}
+
+@media (min-width: 768px) {
+  .col {
+    flex: 1 1 45%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .col {
+    flex: 1 1 30%;
+  }
+}
+
+:root {
+  --day-color: #60a5fa;
+  --bg-color: #87CEEB;
+  --window-color: #000000;
+  --max-content-width: 1200px;
+}
+
+/* Базовые стили для мобильных */
+body {
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  transition: background 0.5s;
+  overflow-x: hidden;
+}
+
+header {
+  color: rgb(58, 58, 58);
+  background-color: #ffffff;
+  border: solid 5px rgb(255, 255, 255);
+  border-radius: 20px;
+  margin: 20px auto;
+  padding: 15px;
+  max-width: 90%;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  animation: glow 1s infinite;
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+img {
+  border: solid 3px #ffffff;
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  box-shadow: 0 0 15px 5px rgba(255,255,255,0.5);
+}
+
+footer {
+  margin: 100px auto 20px;
+  padding: 15px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  max-width: 300px;
+  width: 90%;
+  font-size: 0.9em;
+}
+
+/* Адаптивная типографика */
+h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+h2 { font-size: clamp(1.2rem, 3vw, 1.5rem); }
+
+/* Медиа-запросы для планшетов */
+@media (min-width: 768px) {
+  body {
+    padding: 25px;
+  }
+  
+  header {
+    padding: 25px;
+    max-width: 80%;
+  }
+  
+  .theme-switcher {
+    top: 20px;
+    bottom: auto;
+    padding: 10px 15px;
+  }
+  
+  figcaption {
+    font-size: 1em;
+    padding: 8px 15px;
+  }
+}
+
+/* Медиа-запросы для десктопов */
+@media (min-width: 1024px) {
+  .gallery-container {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  
+  footer {
+    margin-top: 150px;
+    max-width: 400px;
+  }
+}
+
+.theme-switcher {
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  border: solid 3px rgb(255, 255, 255);
+  border-radius: 20px;
+  cursor: pointer;
+  background: #fff;
+  z-index: 1000;
+  animation: glow 1s infinite;
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Для планшетов */
+@media (min-width: 768px) {
+  .theme-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    bottom: auto;
+    left: auto;
+    font-size: 16px;
+  }
+}
+
+/* Для десктопов */
+@media (min-width: 1024px) {
+  .theme-switcher {
+    top: 40px;
+    right: 40px;
+    padding: 12px 18px;
+  }
+}
+
+figcaption {
+  background-color: #87CEEB;
+  border-radius: 5px;
+  border: solid 2px rgb(255, 255, 255);
+  margin: 8px auto; /* Центрирование */
+  padding: 6px 10px;
+  width: 90%; /* Ширина относительно родителя */
+  max-width: 380px; /* Максимальная ширина */
+  font-size: 0.9em;
+  box-sizing: border-box; /* Учет границ в ширине */
+}
+
+/* Для маленьких экранов */
+@media (max-width: 480px) {
+  figcaption {
+    width: 95%;
+    font-size: 0.8em;
+    padding: 4px 8px;
+  }
+}
+
+/* Для планшетов */
+@media (min-width: 768px) {
+  figcaption {
+    max-width: 420px;
+    padding: 8px 15px;
+  }
+}
+
+figcaption {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background: #ffffff81
+}
+
+
+figure {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative; /* Для корректного позиционирования figcaption */
+  overflow: visible; /* Чтобы figcaption не обрезался */
+  margin: 15px 0;
+  transition: transform 0.3s;
+}
+
+figure:hover {
+  transform: 
+    translateY(-5px) 
+    rotateZ(1deg); /* Уменьшенный угол */
+  z-index: 10;
+}
+
+figure:hover img {
+  box-shadow: 0 0 30px rgba(255,255,255,0.5);
+}

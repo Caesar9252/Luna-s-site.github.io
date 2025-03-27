@@ -56,8 +56,6 @@ footer {
   pointer-events: none;
   z-index: -1;
 }
-
-/* Облака */
 .cloud {
   position: absolute;
   background: white;
